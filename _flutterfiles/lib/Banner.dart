@@ -24,7 +24,7 @@ class _LedBannerScreenState extends State<LedBannerScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorDark,
       body: Container(
-        child: ListView(
+        child: ListView(//this may or may not be needed
           scrollDirection: Axis.horizontal,
           children: [ScrollingAnimation(text: widget.data)],
         ),
