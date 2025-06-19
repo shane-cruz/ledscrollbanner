@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class myObject extends StatelessWidget {
   final String text;
 
+
   myObject({super.key, required this.text});
 
   @override

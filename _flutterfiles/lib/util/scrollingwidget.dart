@@ -20,7 +20,7 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
     super.initState();
     motioncontroller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 4),//duration per cycle
+      duration: Duration(seconds: widget.text.length), //THIS IS TIME - FIX IT
     );
   }
 
@@ -34,26 +34,24 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
   Widget build(BuildContext context) {
     final screenwidth = MediaQuery.of(context).size.width;
 
-
     //STATES THE ANIMATION BEHAVIOUR
-    theAnimation = Tween<double>(begin: screenwidth, end: -screenwidth).animate(motioncontroller)
-      ..addListener(() {
-        // print(theAnimation.value);
-        setState(() {});
-      });
+    theAnimation =
+        Tween<double>(begin: screenwidth, end: -screenwidth).animate(
+            motioncontroller,
+          ) //THIS IS DISTANCE- FIX IT TRY TO FIND A WIDGET TO MAKE THE SPEED CONSISTENT
+          ..addListener(() {
+            print(theAnimation.value);
+            setState(() {});
+          });
     motioncontroller.repeat();
 
     return Transform.translate(
       //moves widget with regards to  x to y axis
-      offset: Offset(theAnimation.value, 0),
-      child: SingleChildScrollView(
-        //this is a scrollable widget
-        scrollDirection: Axis.horizontal,
+      offset: Offset(theAnimation.value, 0), // ALSO DISTANCE
 
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [myObject(text: widget.text.toUpperCase())],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [myObject(text: widget.text.toUpperCase())],
       ),
     );
   }
