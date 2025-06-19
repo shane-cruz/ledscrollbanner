@@ -1,4 +1,3 @@
-import 'package:_flutterfiles/util/object.dart';
 import 'package:_flutterfiles/util/scrollingwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
