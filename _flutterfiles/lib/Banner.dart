@@ -1,11 +1,12 @@
 import 'package:_flutterfiles/util/object.dart';
 import 'package:_flutterfiles/util/scrollingwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-// This calls the objects and the animation file
+// Screen 2- calls scrollingwidget
+
 class LedBannerScreen extends StatefulWidget {
-  
-  //retrieve data from prev screen
+  //retrieve data from prev screen(Homescreen)
   final String data;
   LedBannerScreen(this.data);
 
@@ -14,10 +15,18 @@ class LedBannerScreen extends StatefulWidget {
 }
 
 class _LedBannerScreenState extends State<LedBannerScreen> {
+  //screen on landscape
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     return Scaffold(
-      body: Container(child: ScrollingAnimation(text: widget.data)),
+      body: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [ScrollingAnimation(text: widget.data)],
+      ),
     );
   }
 }

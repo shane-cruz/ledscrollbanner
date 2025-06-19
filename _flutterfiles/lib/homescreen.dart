@@ -1,5 +1,6 @@
 import 'package:_flutterfiles/Banner.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 //this will ask for the textcontroller
 class Homescreen extends StatelessWidget {
@@ -18,6 +19,9 @@ class Homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //screen on portrait
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     return Scaffold(
       appBar: AppBar(),
       body: Container(

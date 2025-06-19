@@ -26,10 +26,12 @@ class myObject extends StatelessWidget {
         blendMode: BlendMode.dstIn,
 
         child: Column(
+          
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 190),
             ),
           ],
         ),
