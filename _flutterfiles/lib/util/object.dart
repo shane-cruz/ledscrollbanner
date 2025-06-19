@@ -9,7 +9,6 @@ class myObject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //This give a gradient design
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -17,6 +16,7 @@ class myObject extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
+              letterSpacing: 2.0,
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
               fontSize: 190,

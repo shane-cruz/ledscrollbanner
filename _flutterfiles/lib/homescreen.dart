@@ -23,27 +23,68 @@ class Homescreen extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        color: const Color.fromARGB(255, 255, 255, 255),
-        height: 200,
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(20),
+      backgroundColor:  Theme.of(context).primaryColorDark,
 
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: messagecontroller,
-              decoration: InputDecoration(hintText: 'Input Message or Text'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        
+        children: [
+          
+          Container(
+            
+            height: 260,
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: const Color.fromARGB(255, 51, 51, 51)
+          
             ),
-            ElevatedButton(
-              onPressed: () => gotobanner(context),
-              child: Text('Enter Banner'),
+            
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [Text ('Text Banner',style: TextStyle(fontSize: 26, color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold))],
+                ),
+                TextField(
+                  cursorColor: Theme.of(context).primaryColor,
+                  
+                  style: TextStyle( color: Theme.of(context).primaryColorLight),
+                  controller: messagecontroller,
+                  decoration: InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                         borderSide: BorderSide(color: Theme.of(context).primaryColorLight,),),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color:Theme.of(context).primaryColor),),
+                    hintText: 'Input Message or Text', 
+                    hintStyle: TextStyle(color: Theme.of(context).
+                    primaryColorLight)),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                             backgroundColor: Theme.of(context).primaryColor,
+                             foregroundColor: Theme.of(context).primaryColorDark,
+                          ),
+                      onPressed: () => gotobanner(context),
+                      child: Text('Show Banner'),
+                    ),
+                  ],
+                ),
+
+
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

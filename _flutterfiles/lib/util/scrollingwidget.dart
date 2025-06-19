@@ -29,24 +29,22 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
         setState(() {});
       });
     motioncontroller.repeat();
-  }
 
-  @override
-  void dispose() {
-    motioncontroller.dispose();
-    super.dispose();
+    @override
+    void dispose() {
+      motioncontroller.dispose();
+      super.dispose();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black12,
-      body: Padding(
-        padding: EdgeInsets.only(left: 50 * theAnimation.value),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [myObject(text: widget.text.toUpperCase())],
-        ),
+    return Padding(
+    
+      padding: EdgeInsets.only(left: 50 * theAnimation.value),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [myObject(text: widget.text.toUpperCase())],
       ),
     );
   }

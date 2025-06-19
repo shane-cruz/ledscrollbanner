@@ -22,9 +22,12 @@ class _LedBannerScreenState extends State<LedBannerScreen> {
       DeviceOrientation.landscapeRight,
     ]);
     return Scaffold(
-      body: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [ScrollingAnimation(text: widget.data)],
+      backgroundColor: Theme.of(context).primaryColorDark,
+      body: Container(
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [ScrollingAnimation(text: widget.data)],
+        ),
       ),
     );
   }
