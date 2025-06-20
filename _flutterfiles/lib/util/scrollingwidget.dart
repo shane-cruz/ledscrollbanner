@@ -1,5 +1,3 @@
-
-
 import 'package:_flutterfiles/util/object.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +14,9 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController motioncontroller;
   late Animation<double> theAnimation;
-  late int time = (theAnimation.value / speed(widget.text)).round();
-  late double distance = speed(widget.text) * 4;
+  late int time;
+  late double distance;
+  late double screenwidth;
 
   int speed(String text) {
     if (text.length <= 6) {
@@ -30,22 +29,16 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final screenwidth = MediaQuery.of(context).size.width;
+    });
+    var time = (theAnimation.value / speed(widget.text)).round();
+    distance = speed(widget.text) * 4;
 
     motioncontroller = AnimationController(
       vsync: this,
       duration: Duration(seconds: time), //THIS IS TIME - FIX IT
     );
-  }
-
-  @override
-  void dispose() {
-    motioncontroller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final double screenwidth = MediaQuery.of(context).size.width;
 
     //STATES THE ANIMATION BEHAVIOUR
     theAnimation =
@@ -56,7 +49,16 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
           setState(() {});
         });
     motioncontroller.repeat();
+  }
 
+  @override
+  void dispose() {
+    motioncontroller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Transform.translate(
       //moves widget with regards to  x to y axis
       offset: Offset(distance, 0),
