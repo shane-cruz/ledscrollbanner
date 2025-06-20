@@ -1,6 +1,5 @@
 import 'package:_flutterfiles/util/object.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 //Widget for animation in screen2 - returns the object
 class ScrollingAnimation extends StatefulWidget {
@@ -14,20 +13,21 @@ class ScrollingAnimation extends StatefulWidget {
 class ScrollingAnimationState extends State<ScrollingAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController motioncontroller;
-  late Animation<double> theAnimation;
+  late Animation<int> theAnimation;
+  late int time = (theAnimation.value / speed(widget.text)).round();
+  late double distance = speed(widget.text) * 4;
 
-  int value(String text) {
-    if (text.length >= 6) {
+  int speed(String text) {
+    if (text.length <= 6) {
       return 0;
     } else {
-      return (text.length / 6).ceil();
+      return (6 - text.length) * 5;
     }
   }
 
   @override
   void initState() {
     super.initState();
-    final time = value(widget.text) + 3;
 
     motioncontroller = AnimationController(
       vsync: this,
@@ -43,22 +43,22 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
 
   @override
   Widget build(BuildContext context) {
-    final screenwidth = MediaQuery.of(context).size.width;
+    final int screenwidth = MediaQuery.of(context).size.width.ceil();
 
     //STATES THE ANIMATION BEHAVIOUR
     theAnimation =
-        Tween<double>(begin: screenwidth, end: -screenwidth).animate(
-            motioncontroller,
-          ) //THIS IS DISTANCE- FIX IT TRY TO FIND A WIDGET TO MAKE THE SPEED CONSISTENT
-          ..addListener(() {
-            print(theAnimation.value);
-            setState(() {});
-          });
+        Tween<int>(
+          begin: screenwidth,
+          end: -screenwidth,
+        ).animate(motioncontroller)..addListener(() {
+          print(theAnimation.value);
+          setState(() {});
+        });
     motioncontroller.repeat();
 
     return Transform.translate(
       //moves widget with regards to  x to y axis
-      offset: Offset(theAnimation.value, 0), // ALSO DISTANCE
+      offset: Offset(distance, 0),
 
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
