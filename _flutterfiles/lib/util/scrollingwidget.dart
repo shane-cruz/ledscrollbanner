@@ -1,5 +1,6 @@
 import 'package:_flutterfiles/util/object.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 //Widget for animation in screen2 - returns the object
 class ScrollingAnimation extends StatefulWidget {
@@ -15,12 +16,22 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
   late AnimationController motioncontroller;
   late Animation<double> theAnimation;
 
+  int value(String text) {
+    if (text.length >= 6) {
+      return 0;
+    } else {
+      return (text.length / 6).ceil();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    final time = value(widget.text) + 3;
+
     motioncontroller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: widget.text.length), //THIS IS TIME - FIX IT
+      duration: Duration(seconds: time), //THIS IS TIME - FIX IT
     );
   }
 

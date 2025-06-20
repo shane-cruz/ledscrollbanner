@@ -9,3 +9,7 @@
 
 // issue 3:
 // the distance and time are not proportional therefore it causes an inconsistent speed.
+// at first short message generate faster animation
+// now its opposite, short message now generate slower animation ONLY when i multiply
+// the animation value to addition and divide that thing
+// WHYYY???HOW TO FIND BALANCE????
