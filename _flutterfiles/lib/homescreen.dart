@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 //this will ask for the textcontroller
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
+  
 
   final messagecontroller = TextEditingController();
 
@@ -13,7 +14,7 @@ class Homescreen extends StatelessWidget {
     final String data = messagecontroller.text;
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LedBannerScreen(data)),
+      MaterialPageRoute(builder: (context) => LedBannerScreen(data, )),
     );
   }
 

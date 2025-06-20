@@ -7,13 +7,17 @@ import 'package:flutter/services.dart';
 class LedBannerScreen extends StatefulWidget {
   //retrieve data from prev screen(Homescreen)
   final String data;
+
   LedBannerScreen(this.data);
+  //this will generate a speed
+
 
   @override
   State<LedBannerScreen> createState() => _LedBannerScreenState();
 }
 
 class _LedBannerScreenState extends State<LedBannerScreen> {
+  
   //screen on landscape
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,8 @@ class _LedBannerScreenState extends State<LedBannerScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorDark,
       body: Container(
-        child: ListView(//this may or may not be needed
+        child: ListView(
+          //this may or may not be needed
           scrollDirection: Axis.horizontal,
           children: [ScrollingAnimation(text: widget.data)],
         ),

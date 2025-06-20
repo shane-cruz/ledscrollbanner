@@ -1,3 +1,5 @@
+
+
 import 'package:_flutterfiles/util/object.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,7 @@ class ScrollingAnimation extends StatefulWidget {
 class ScrollingAnimationState extends State<ScrollingAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController motioncontroller;
-  late Animation<int> theAnimation;
+  late Animation<double> theAnimation;
   late int time = (theAnimation.value / speed(widget.text)).round();
   late double distance = speed(widget.text) * 4;
 
@@ -43,15 +45,14 @@ class ScrollingAnimationState extends State<ScrollingAnimation>
 
   @override
   Widget build(BuildContext context) {
-    final int screenwidth = MediaQuery.of(context).size.width.ceil();
+    final double screenwidth = MediaQuery.of(context).size.width;
 
     //STATES THE ANIMATION BEHAVIOUR
     theAnimation =
-        Tween<int>(
+        Tween<double>(
           begin: screenwidth,
           end: -screenwidth,
         ).animate(motioncontroller)..addListener(() {
-          print(theAnimation.value);
           setState(() {});
         });
     motioncontroller.repeat();

@@ -6,6 +6,8 @@ class myObject extends StatelessWidget {
   final String text;
 
 
+
+
   myObject({super.key, required this.text});
 
   @override
@@ -15,7 +17,7 @@ class myObject extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            text,
+            text, 
             style: TextStyle(
               letterSpacing: 2.0,
               color: Theme.of(context).primaryColor,
